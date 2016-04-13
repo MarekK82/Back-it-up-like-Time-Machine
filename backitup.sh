@@ -41,12 +41,12 @@ if [ $? -ne 0 ]; then exit $?; fi
 # Run rsync to perform a backup accordingly to the determined strategy.
 if [ $STRATEGY -eq 0 ]; then
   # Full backup
-  CMD="rsync --archive --inplace --verbose /home '$DESTINATION'"
+  CMD="rsync --archive --inplace --exclude-from='/mnt/Time Machine HD/Backups.backupdb/exclude.lst' --verbose /home '$DESTINATION'"
   echo "Performing full backup: \`$CMD\`"
   eval $CMD
 else
   # Incremental backup
-  CMD="rsync --archive --inplace --verbose --delete --link-dest='$LATEST' /home '$DESTINATION'"
+  CMD="rsync --archive --inplace --exclude-from='/mnt/Time Machine HD/Backups.backupdb/exclude.lst' --verbose --delete --link-dest='$LATEST' /home '$DESTINATION'"
   echo "Performing Incremental backup: \`$CMD\`"
   eval $CMD
 fi

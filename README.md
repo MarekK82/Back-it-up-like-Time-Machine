@@ -24,3 +24,5 @@ TODO
 * Implement lock mechanism to prevent multiple instances.
 * Implement error and/or signal handling for rsync.
 * Implement algorithm to delete old backups for saving storage space.
+* Implement external configuration file for environment related settings.
+* Build in a logger.
