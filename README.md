@@ -7,9 +7,18 @@ Backing up your data similar to Apple's Time Machine by making use of hard links
 Description
 -----------
 
-First a full backup is performed, followed by incremental backups hard linking
-into the latest previous backup. That way each incremental backup is implicit a
-full backup.
+First a full backup is performed, followed by incremental backups hard linking into the latest previous backup. That way each incremental backup is implicit a full backup.
+
+
+### Timeline ###
+
+The timeline consists of a folder containing all the backups made.
+
+
+### Backup ###
+
+A backup is a folder inside the timeline, whose name is given with the format `YYYYMMDDTHHMMSS`, which is according to the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) specificartion.
+Each backup is an *hard linked* incremental backup of the previous backup in the timeline, which means every backup is a full backup.
 
 
 Setup
