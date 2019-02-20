@@ -1,0 +1,11 @@
+[Unit]
+Description=My hourly backup
+
+[Timer]
+OnCalendar=hourly
+OnUnitActiveSec=1h
+Persistent=true
+Unit=my-machine-backup.service
+
+[Install]
+WantedBy=timers.target

@@ -15,7 +15,7 @@ fi
 
 # Set up host specific directory for its backup collection (aka Timeline). The 
 # mount point needs to be prepared in FSTAB(5) accordingly.
-TIMELINE="/mnt/Time Machine HD/Backups.backupdb/$HOSTNAME"
+TIMELINE="/media/user/Time Machine HD/Backups.backupdb/$HOSTNAME"
 if [ ! -d "$TIMELINE" ]; then
   mkdir --parents "$TIMELINE"
   if [ $? -ne 0 ]; then exit $?; fi
@@ -41,12 +41,12 @@ if [ $? -ne 0 ]; then exit $?; fi
 # Run rsync to perform a backup accordingly to the determined strategy.
 if [ $STRATEGY -eq 0 ]; then
   # Full backup
-  CMD="rsync --archive --inplace --exclude-from='/mnt/Time Machine HD/Backups.backupdb/exclude.lst' --verbose /home '$DESTINATION'"
+  CMD="rsync --human-readable --archive --inplace --exclude-from='/media/user/Time Machine HD/Backups.backupdb/exclude.lst' --verbose /home '$DESTINATION'"
   echo "Performing full backup: \`$CMD\`"
   eval $CMD
 else
   # Incremental backup
-  CMD="rsync --archive --inplace --exclude-from='/mnt/Time Machine HD/Backups.backupdb/exclude.lst' --verbose --delete --link-dest='$LATEST' /home '$DESTINATION'"
+  CMD="rsync --human-readable --archive --inplace --exclude-from='/media/user/Time Machine HD/Backups.backupdb/exclude.lst' --verbose --delete --link-dest='$LATEST' /home '$DESTINATION'"
   echo "Performing Incremental backup: \`$CMD\`"
   eval $CMD
 fi

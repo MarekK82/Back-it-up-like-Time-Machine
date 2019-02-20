@@ -24,3 +24,25 @@ function Timeline:sort()
     return a.file < b.file
   end)
 end
+
+function Timeline:purgeMonth()
+  local lastMonthByDay = {}
+
+  for _, b in pairs(self.backups) do
+    local day = b:getDay()
+
+    if not lastMonthByDay[day] then
+      lastMonthByDay[day] = {}
+    end
+
+    lastMonthByDay[day][#lastMonthByDay[day] + 1] = b
+  end
+
+  for k, v in pairs(lastMonthByDay) do
+    print(string.format("Purging last month by day %d:", k))
+    -- Purging all but the oldest per day
+    for i = 2, #v do
+      print(string.format("  Purging backup %q ...", v[i].path))
+    end
+  end
+end

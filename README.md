@@ -1,6 +1,8 @@
 Back it up like Time Machine
 ============================
 
+> Discontinued project, in favor of [rsnapshot](https://rsnapshot.org/).
+
 Backing up your data similar to Apple's Time Machine by making use of hard links and such...
 
 
@@ -25,6 +27,12 @@ Setup
 -----
 
 For information about how to set up a Time Machine like backup read between the lines inside the `backitup` script file :-)
+
+
+### Dependencies ###
+
+* Lua
+* luafilesystem
 
 
 TODO

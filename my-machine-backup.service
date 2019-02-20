@@ -1,0 +1,5 @@
+[Unit]
+Description=My Machine Backup
+
+[Service]
+ExecStart=/home/user/bin/backitup.sh

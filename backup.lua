@@ -87,3 +87,10 @@ function Backup:getTimestamp()
 	local ye, mo, da, ho, mi, se = self.file:match(pattern)
 	return os.time({year = ye, month = mo, day = da, hour = ho, min = mi, sec = se})
 end
+
+function Backup:getDay()
+	local pattern = "^%d%d%d%d%d%d(%d%d)T%d%d%d%d%d%d$"
+	local day = string.match(self.file, pattern)
+	assert(day, "unable to parse for day")
+	return tonumber(day)
+end

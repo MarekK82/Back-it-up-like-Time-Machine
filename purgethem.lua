@@ -13,7 +13,7 @@ end
 -- Main
 local function main()
 	local timeline = Backup.getBackups("month")
-	print(timeline:size())
+	timeline:purgeMonth()
 end
 
 main()
